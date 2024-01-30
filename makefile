@@ -30,6 +30,6 @@ maindrec: main.o
 all: loops recursives recursived loopd mains maindloop maindrec
 
 clean:
-	rm -f $(OBJ) libclassloops.a libclassrec.a libclassrec.so libclassloops.so
+	rm -f $(OBJ) maindloop maindrec mains advancedClassificationRecursion *.o libclassloops.a libclassrec.a libclassrec.so libclassloops.so
 
 .PHONY: all clean loops recursives recursived loopd
