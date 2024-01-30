@@ -7,16 +7,12 @@ LIB_OBJ_LOOP = basicClassification.o  advancedClassificationLoop.o
 LIB_OBJ_REC = basicClassification.o  advancedClassificationRecursion.o
 
 loops: libclassloops.a
-	ar rcs libclassloops.a $(LIB_OBJ_LOOP)
 
-recursives: $(LIB_OBJ_REC) libclassrec.a
-	ar rcs libclassrec.a $(LIB_OBJ_REC)
+recursives: libclassrec.a
 
-recursived: $(LIB_OBJ_REC) libclassrec.so
-	$(CC) -shared -o libclassrec.so $(LIB_OBJ_REC)
+recursived: libclassrec.so
 
-loopd: $(LIB_OBJ_LOOP) libclassloops.so
-	$(CC) -shared -o libclassloops.so $(LIB_OBJ_LOOP)
+loopd: libclassloops.so
 
 mains: libclassrec.a main.o
 	$(CC) $(CFLAGS) -o mains main.o  libclassrec.a
@@ -33,3 +29,15 @@ clean:
 	rm -f $(OBJ) maindloop maindrec mains advancedClassificationRecursion *.o libclassloops.a libclassrec.a libclassrec.so libclassloops.so
 
 .PHONY: all clean loops recursives recursived loopd
+
+libclassloops.a: $(LIB_OBJ_LOOP)
+	ar rcs libclassloops.a $(LIB_OBJ_LOOP)
+
+libclassrec.a: $(LIB_OBJ_REC)
+	ar rcs libclassrec.a $(LIB_OBJ_REC)
+
+libclassrec.so: $(LIB_OBJ_REC)
+	$(CC) -shared -o libclassrec.so $(LIB_OBJ_REC)
+
+libclassloops.so: $(LIB_OBJ_LOOP)
+	$(CC) -shared -o libclassloops.so $(LIB_OBJ_LOOP)
