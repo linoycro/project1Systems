@@ -6,16 +6,16 @@ OBJ = $(SRC:.c=.o)
 LIB_OBJ_LOOP = basicClassification.o  advancedClassificationLoop.o
 LIB_OBJ_REC = basicClassification.o  advancedClassificationRecursion.o
 
-loops: $(LIB_OBJ_LOOP)
+loops: libclassloops.a
 	ar rcs libclassloops.a $(LIB_OBJ_LOOP)
 
-recursives: $(LIB_OBJ_REC)
+recursives: $(LIB_OBJ_REC) libclassrec.a
 	ar rcs libclassrec.a $(LIB_OBJ_REC)
 
-recursived: $(LIB_OBJ_REC)
+recursived: $(LIB_OBJ_REC) libclassrec.so
 	$(CC) -shared -o libclassrec.so $(LIB_OBJ_REC)
 
-loopd: $(LIB_OBJ_LOOP)
+loopd: $(LIB_OBJ_LOOP) libclassloops.so
 	$(CC) -shared -o libclassloops.so $(LIB_OBJ_LOOP)
 
 mains: libclassrec.a main.o
