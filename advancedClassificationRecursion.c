@@ -55,31 +55,7 @@ int isArmStrong(int orgnum)
     }
 }
 
-// int isPalindromeRecursive(int num, int l)
-// {
-//     if (l = 1)
-//     {
-//         return 1;
-//     }
-//     if (l = 2)
-//     {
-//         if (num/10 != num% 10)
-//         {
-//             return 0;
-//         }
-//     }
-//     int firstdigit = num / power(10 , (l- 1));
-//     int lastdigit = num % 10;
-//     if (firstdigit != lastdigit)
-//     {
-//         return 0;
-//     }
-//     else
-//     {
-//         num = (num % power(10 , l-1)) /10;
-//         return isPalindromeRecursive(num, l-2);
-//     }
-// }
+
 int isPalindromeRecursive(int num, int l)
 {
     if (l == 0)
